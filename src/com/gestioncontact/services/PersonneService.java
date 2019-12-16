@@ -3,6 +3,7 @@ package com.gestioncontact.services;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 
+
 import com.gestioncontact.dao.PersonneDao;
 import com.gestioncontact.model.Personne;
 
@@ -13,6 +14,7 @@ public class PersonneService {
 	
 	
 	public Personne getPersonById(long id) {
+		System.out.println("Appel Service");
 		return dao.getPersonById(id);
 	}
 	

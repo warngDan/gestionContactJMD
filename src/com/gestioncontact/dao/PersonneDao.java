@@ -29,4 +29,6 @@ public class PersonneDao {
 	public void deletePerson(Personne person) {
 		em.remove(person);
 	}
+	
+	
 }

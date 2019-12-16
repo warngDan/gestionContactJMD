@@ -14,9 +14,14 @@
 	
 <p>
 <table>
+<tr>
+<th>nom</th><th>prenom</th><th>rue</th><th>code postale</th><th>ville</th><th>pays</th>
+</tr>
 	<c:forEach var="personne" items="${p1sav}">
 	<tr>
 	<td>${personne.nom} </td><td>${personne.prenom}</td>
+	<td>${personne.adresse.rue} </td><td>${personne.adresse.codePostale}</td>
+	<td>${personne.adresse.ville} </td><td>${personne.adresse.pays}</td>
 	</tr>
 	
 	</c:forEach>

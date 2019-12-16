@@ -19,6 +19,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,12 +45,12 @@ public class Personne implements Serializable {
 	private String prenom;
 	
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name="contacts_adresses",
 	joinColumns = @JoinColumn(name="fk_adresse"),
 	inverseJoinColumns = @JoinColumn(name="fk_personne"))
-	//private Adresse adresse;
-	private List<Adresse> listAdresse = new ArrayList<>();
+	private Adresse adresse;
+	//private List<Adresse> listAdresse = new ArrayList<>();
 
 	
 	public Personne() {}
@@ -84,19 +85,19 @@ public class Personne implements Serializable {
 		this.prenom = prenom;
 	}
 	
-
-	public List<Adresse> getLstAdresses() {
-		return listAdresse;
-	}
-//	public Adresse getAdresse() {
-//		return adresse;
+//
+//	public List<Adresse> getLstAdresses() {
+//		return listAdresse;
 //	}
+	public Adresse getAdresse() {
+		return adresse;
+	}
 
 
 
 	@Override
 	public String toString() {
-		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + listAdresse + "]";
+		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + adresse + "]";
 	}
 
 

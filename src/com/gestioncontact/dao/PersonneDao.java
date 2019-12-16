@@ -15,6 +15,7 @@ public class PersonneDao {
 	
 	
 	public Personne getPersonById(long id) {
+		System.out.println("Appel DAO");
 		return em.find(Personne.class, id);
 	}
 	

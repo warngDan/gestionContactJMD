@@ -14,40 +14,40 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "personnes")
 @Access(AccessType.FIELD)
-@SuppressWarnings("serial")
 public class Personne implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "pk")
-	private long id;
-	private Civilite civilite;
+	private long pk;
+	//private String civilite;
+	private String civilite;
 	private String nom;
 	private String prenom;
-	@ManyToMany
-	private List<Adresse> lstAdresses = new ArrayList<Adresse>();
+//	@ManyToMany
+//	private List<Adresse> lstAdresses = new ArrayList<Adresse>();
 	
 	public Personne() {}
 	
-	public Personne(Civilite civilite, String nom, String prenom) {
+	public Personne(String civilite, String nom, String prenom) {
 		this.civilite = civilite;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
 	public long getId() {
-		return id;
+		return pk;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.pk = id;
 	}
-	public String getCivilite() {
+	public String getString() {
 		return civilite.toString();
 	}
-	public void setCivilite(Civilite civilite) {
+	public void setString(String civilite) {
 		this.civilite = civilite;
 	}
 	public String getNom() {
@@ -64,9 +64,9 @@ public class Personne implements Serializable {
 	}
 	
 
-	public List<Adresse> getLstAdresses() {
-		return lstAdresses;
-	}
+//	public List<Adresse> getLstAdresses() {
+//		return lstAdresses;
+//	}
 
 
 

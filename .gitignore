@@ -1,0 +1,12 @@
+bin/
+build/
+.settings/
+*.class
+.project
+.classpath
+.metadata
+
+.DS_Store
+.AppleDouble
+.LSOverride
+.Trashes

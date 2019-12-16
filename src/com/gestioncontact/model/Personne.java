@@ -6,30 +6,48 @@ import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "personnes")
 @Access(AccessType.FIELD)
+
+@NamedQuery(name = "Personne.findAllPersonne",
+			query="SELECT p FROM Personne p")
+
 public class Personne implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pk")
 	private long pk;
 	//private String civilite;
 	private String civilite;
 	private String nom;
 	private String prenom;
-//	@ManyToMany
-//	private List<Adresse> lstAdresses = new ArrayList<Adresse>();
+	
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(name="contacts_adresses",
+	joinColumns = @JoinColumn(name="fk_adresse"),
+	inverseJoinColumns = @JoinColumn(name="fk_personne"))
+	//private Adresse adresse;
+	private List<Adresse> listAdresse = new ArrayList<>();
+
 	
 	public Personne() {}
 	
@@ -38,10 +56,10 @@ public class Personne implements Serializable {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
-	public long getId() {
+	public long getPk() {
 		return pk;
 	}
-	public void setId(long id) {
+	public void setPk(long id) {
 		this.pk = id;
 	}
 	public String getString() {
@@ -64,8 +82,11 @@ public class Personne implements Serializable {
 	}
 	
 
-//	public List<Adresse> getLstAdresses() {
-//		return lstAdresses;
+	public List<Adresse> getLstAdresses() {
+		return listAdresse;
+	}
+//	public Adresse getAdresse() {
+//		return adresse;
 //	}
 
 
@@ -74,5 +95,7 @@ public class Personne implements Serializable {
 	public String toString() {
 		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + "]";
 	}
+
+
 	
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gestioncontact.model.Personne;
 import com.gestioncontact.services.PersonneService;
+import java.util.List;
 
 /**
  * Servlet implementation class TestServlet
@@ -18,16 +19,10 @@ import com.gestioncontact.services.PersonneService;
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	@EJB
-	static PersonneService service = new PersonneService();
+	private PersonneService service;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public TestServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -36,12 +31,30 @@ public class TestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Personne p1 = new Personne();
-
-		p1 = service.getPersonById(1);
-
-	request.setAttribute("p1", p1);
-	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+		
+		// Test getPersonById()
+		
+		Personne p0 = service.getPersonById(1);
+		request.setAttribute("p0", p0);
+		
+		
+		// Test saveNewPerson() et getPersonByName();
+		
+		//Personne p1 = new Personne("Mr", "CESAIRE", "Daniel");
+	
+	//	service.saveNewPerson(p1);
+	//	request.setAttribute("p1", p1);
+		
+		
+		//List<Personne> p1sav = service.getAllPerson();
+		//request.setAttribute("p1sav", p1sav);
+		
+		//service.deletePerson(66);
+		//service.updatePerson(67, "CESAIRE", "Jean");
+		
+//		String message = "Hello";
+//		request.setAttribute("coucou", message);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**

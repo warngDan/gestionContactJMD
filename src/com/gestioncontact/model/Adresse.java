@@ -20,26 +20,23 @@ import javax.persistence.JoinColumn;
 @Entity
 @Table(name = "adresses")
 @Access(AccessType.FIELD)
-@SuppressWarnings("serial")
 public class Adresse implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pk")
-	private long id;
+
+	private long pk;
 	private String rue;
 	@Column(name = "code_postal")
 	private String codePostal;
 	private String ville;
 	private String pays;
-	@ManyToMany
-	@JoinTable(
-			name = "contacts_adresses",
-			joinColumns = @JoinColumn(name = "fk_personne"),
-			inverseJoinColumns = @JoinColumn(name = "fk_adresse"))
-	private Set<Personne> lstPersonnes = new HashSet<Personne>();
 	
-	
+
 	
 	public Adresse() {}
 
@@ -50,8 +47,8 @@ public class Adresse implements Serializable {
 		this.pays = pays;
 	}
 
-	public long getId() {
-		return id;
+	public long getPk() {
+		return pk;
 	}
 	
 	public String getRue() {
@@ -83,7 +80,7 @@ public class Adresse implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Adresse [id=" + id + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + ", pays="
+		return "Adresse [id=" + pk + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + ", pays="
 				+ pays + "]";
 	}
 

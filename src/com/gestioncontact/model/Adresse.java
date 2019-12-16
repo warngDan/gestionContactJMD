@@ -17,7 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
-@Embeddable
+
 @Entity
 @Table(name = "adresses")
 @Access(AccessType.FIELD)

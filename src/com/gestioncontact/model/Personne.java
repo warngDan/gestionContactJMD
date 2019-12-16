@@ -19,6 +19,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -42,7 +43,7 @@ public class Personne implements Serializable {
 	private String nom;
 	private String prenom;
 	
-	@Embedded
+	
 	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name="contacts_adresses",
 	joinColumns = @JoinColumn(name="fk_adresse"),
@@ -95,7 +96,7 @@ public class Personne implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + "]";
+		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + listAdresse + "]";
 	}
 
 

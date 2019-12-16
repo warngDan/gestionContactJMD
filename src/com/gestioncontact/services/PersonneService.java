@@ -16,7 +16,7 @@ public class PersonneService {
 	
 	
 	public Personne getPersonById(long id) {
-		System.out.println("Appel Service");
+		//System.out.println("Appel Service");
 		return dao.getPersonById(id);
 	}
 	

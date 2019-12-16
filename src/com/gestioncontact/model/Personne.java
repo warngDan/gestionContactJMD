@@ -23,29 +23,41 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
+/**
+ * 
+ * Description: Classe métier permettant d'instancier un objet Personne.
+ * Elle contient: 
+ * -tous les attributs associés
+ * -un constructeur
+ * -les getters et setters de chaque attribut
+ * -une méthode d'affichage
+ * La classe est persisté dans la base de donnée
+ * 
+ * @author Daniel & Jean-Michel
+ * @version 1.0
+ * 
+ */
 @Entity
 @Table(name = "personnes")
 @Access(AccessType.FIELD)
 
 @NamedQuery(name = "Personne.findAllPersonne",
 			query="SELECT p FROM Personne p")
-
 public class Personne implements Serializable {
 
-	/**
-	 * 
-	 */
+	//Attributs
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long pk;
-	//private String civilite;
 	private String civilite;
 	private String nom;
 	private String prenom;
 	
 	
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name="contacts_adresses",
 	joinColumns = @JoinColumn(name="fk_adresse"),
 	inverseJoinColumns = @JoinColumn(name="fk_personne"))
@@ -53,6 +65,7 @@ public class Personne implements Serializable {
 	//private List<Adresse> listAdresse = new ArrayList<>();
 
 	
+	//Constructeur
 	public Personne() {}
 	
 	public Personne(String civilite, String nom, String prenom) {
@@ -60,6 +73,8 @@ public class Personne implements Serializable {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
+	
+	//Getters Setters
 	public long getPk() {
 		return pk;
 	}
@@ -85,7 +100,7 @@ public class Personne implements Serializable {
 		this.prenom = prenom;
 	}
 	
-//
+
 //	public List<Adresse> getLstAdresses() {
 //		return listAdresse;
 //	}
@@ -94,7 +109,7 @@ public class Personne implements Serializable {
 	}
 
 
-
+	//Méthode d'affichage
 	@Override
 	public String toString() {
 		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + adresse + "]";

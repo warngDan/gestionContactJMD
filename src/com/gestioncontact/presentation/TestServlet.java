@@ -45,6 +45,7 @@ public class TestServlet extends HttpServlet {
 	//	service.saveNewPerson(p1);
 	//	request.setAttribute("p1", p1);
 		
+	
 		
 		List<Personne> p1sav = service.getAllPerson();
 		request.setAttribute("p1sav", p1sav);

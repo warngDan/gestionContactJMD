@@ -17,15 +17,28 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
+/**
+
+ * 
+ * Description: Classe métier permettant d'instancier un objet Adresse.
+ * Elle contient: 
+ * -tous les attributs associés
+ * -un constructeur
+ * -les getters et setters de chaque attribut
+ * -une méthode d'affichage
+ * La classe est persisté dans la base de donnée
+ * 
+ * @author Daniel & Jean-Michel
+ * @version 1.0
+ * 
+ */
 
 @Entity
 @Table(name = "adresses")
 @Access(AccessType.FIELD)
 public class Adresse implements Serializable {
 	
-	/**
-	 * 
-	 */
+	//Attributs
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +51,7 @@ public class Adresse implements Serializable {
 	private String pays;
 	
 
-	
+	//Constructeurs
 	public Adresse() {}
 
 	public Adresse(String rue, String codePostal, String ville, String pays) {
@@ -79,6 +92,7 @@ public class Adresse implements Serializable {
 		this.pays = pays;
 	}
 
+	//Méthode d'affichage
 	@Override
 	public String toString() {
 		return "Adresse [id=" + pk + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + ", pays="

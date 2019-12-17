@@ -30,6 +30,7 @@ public class HomeServlet extends HttpServlet {
 	public static final String DELETE_VIEW = "/deleteContact.jsp";
 	public static final String ALL_VIEW = "/viewAllContact.jsp";
 	public static String selectViewer = "index.jsp";
+	List<Personne> listContact;
        
    
 	/**
@@ -59,10 +60,11 @@ public class HomeServlet extends HttpServlet {
 			selectViewer = DELETE_VIEW;
 		}else if (check.equals("view")) {
 			selectViewer = ALL_VIEW;
+			listContact = service.getAllPerson();
+			request.setAttribute("listContact", listContact);
 		}
 		
-		List<Personne> p1sav = service.getAllPerson();
-		request.setAttribute("p1sav", p1sav);
+		
 		
 		this.getServletContext().getRequestDispatcher(selectViewer).forward(request, response);
 	}

@@ -8,12 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>
 <table>
 <tr>
 <th>id</th><th>nom</th><th>prenom</th><th>rue</th><th>code postale</th><th>ville</th><th>pays</th>
 </tr>
-	<c:forEach var="personne" items="${p1sav}">
+	<c:forEach var="personne" items="${listContact}">
 	<tr>
 	<td>${personne.pk} </td><td>${personne.nom} </td><td>${personne.prenom}</td>
 	<td>${personne.adresse.rue} </td><td>${personne.adresse.codePostale}</td>
@@ -21,12 +20,8 @@
 	</tr>
 	
 	</c:forEach>
-	
-	
 
 </table>
 
-</body>
-</html>
 </body>
 </html>

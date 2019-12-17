@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class homeServlet
  */
-@WebServlet("/")
+@WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 	
 	
@@ -27,28 +27,33 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		this.getServletContext().log("GET APPELLEEEEEEE");
+//		
 	}
-
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if (request.getParameter("create") != null) {
+		String check = request.getParameter("check");
+
+		request.setAttribute("check", check);
+		
+		if (check.equals("create")) {
 			selectViewer = CREATE_VIEW;
-		} else if (request.getParameter("update") != null) {
+		} else if (check.equals("update")) {
 			selectViewer = UPDATE_VIEW;
-		} else if (request.getParameter("search") != null) {
+		} else if (check.equals("search")) {
 			selectViewer = SEARCH_VIEW;
-		} else if (request.getParameter("delete") != null) {
+		} else if (check.equals("delete")) {
 			selectViewer = DELETE_VIEW;
 		}
+
+		request.setAttribute("selectViewer", selectViewer);
 		
-		
-		this.getServletContext().getRequestDispatcher(selectViewer).forward(request, response);
-	
+		this.getServletContext().getRequestDispatcher("/WEB-INF/"+selectViewer).forward(request, response);
 	}
+	
 
 }

@@ -1,24 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<form action="ServletSup" method="post">
-			<p>Choisir l'Id du contact a supprimer :</p>
-			<div>
-				<p><input type="text" id="search" name="id"> <p>
-					
-			</div>
+    <head>
+        <meta charset="utf-8" />
+        <title>Recherche</title>
+        <link type="text/css" rel="stylesheet" href="inc/style.css" />
+    </head>
+    <body>
+    	
+		<h1>Rechercher un contact</h1>
+    
+        <div>
+            <form method="post" action="ServletSup">
+               
+    			<div>
+                    <label for="nomContact">Nom </label>
+                    <input type="text" id="nomContact" name="nomContact" placeholder="Saisir le nom" size="20" maxlength="20" required />
+                 </div>
+                   <div> 
+                    <label for="prenomContact">Prénom </label>
+                    <input type="text" id="prenomContact" name="prenomContact" placeholder="Saisir le prénom" size="20" maxlength="20"/>
+                   </div>
 
-			
-				<input class="valid-form" type="submit" id="submit" value="Valider"/>
-				<input type="reset"/>
-			</div>
-		</form>
-
-</body>
+          
+                <input type="submit" value="Valider"  />
+                <input type="reset" value="Annuler" />
+            </form>
+        </div>
+    </body>
 </html>

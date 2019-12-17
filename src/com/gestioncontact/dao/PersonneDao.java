@@ -35,16 +35,17 @@ public class PersonneDao {
 	
 	/**
 	 * Méthode de recherche d'une entité "Personne" dans la base de données par son Nom et son prénom.
-	 * @param id de type "long" faisant référence à l'id de la personne
+	 * @param Nom du contact recherché
+	 * @param Prénonom du contact recherché
 	 * @return renvoi vers l'objet Personne stocké dans la BDD sous cet id
 	 */	
-	public Personne getPersonneByName(String nom, String prenom) {
+	public List<Personne> getPersonneByName(String nom, String prenom) {
 		List<Personne> listPersons = em.createNamedQuery("Personne.getPersonByName", Personne.class)
 				.setParameter("nom", nom).setParameter("prenom", prenom).getResultList();
 		if (listPersons.isEmpty()) {
 			return null;
 		}
-		return listPersons.get(0);
+		return listPersons;
 	}
 	
 	

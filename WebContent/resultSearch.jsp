@@ -19,15 +19,17 @@
 			<th>ville</th>
 			<th>pays</th>
 		</tr>
-		<tr>
-			<td>${contact.pk}</td>
-			<td>${contact.nom}</td>
-			<td>${contact.prenom}</td>
-			<td>${contact.adresse.rue}</td>
-			<td>${contact.adresse.codePostale}</td>
-			<td>${contact.adresse.ville}</td>
-			<td>${contact.adresse.pays}</td>
-		</tr>
+		<c:forEach var="personne" items="${lstContacts}">
+			<tr>
+				<td>${personne.pk}</td>
+				<td>${personne.nom}</td>
+				<td>${personne.prenom}</td>
+				<td>${personne.adresse.rue}</td>
+				<td>${personne.adresse.codePostale}</td>
+				<td>${personne.adresse.ville}</td>
+				<td>${personne.adresse.pays}</td>
+			</tr>
+			</c:forEach>
 	</table>
 
 </body>

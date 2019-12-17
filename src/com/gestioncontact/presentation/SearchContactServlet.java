@@ -49,11 +49,11 @@ public class SearchContactServlet extends HttpServlet {
 		String nom = request.getParameter("nomContact").trim();
 		String prenom = request.getParameter("prenomContact").trim();
 		
-		Personne contact = service.getPersonByName(nom, prenom);
+		List<Personne> lstContacts = service.getPersonByName(nom, prenom);
 		
 		
 		
-		request.setAttribute("contact", contact);
+		request.setAttribute("lstContacts", lstContacts);
 		
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 		

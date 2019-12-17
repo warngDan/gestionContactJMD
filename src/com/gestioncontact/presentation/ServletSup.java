@@ -1,6 +1,7 @@
 package com.gestioncontact.presentation;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gestioncontact.model.Personne;
 import com.gestioncontact.services.PersonneService;
 
 /**
@@ -17,6 +19,8 @@ import com.gestioncontact.services.PersonneService;
 @WebServlet("/ServletSup")
 public class ServletSup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static final String VIEW = "/resultSearchDelete.jsp";
        
 	@EJB
 	private PersonneService service;
@@ -40,10 +44,16 @@ public class ServletSup extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		long newId=Long.parseLong(id);
+		String nom = request.getParameter("nomContact").trim();
+		String prenom = request.getParameter("prenomContact").trim();
 		
-		service.deletePerson(newId);
+		List<Personne> lstContacts = service.getPersonByName(nom, prenom);
+		
+		
+		
+		request.setAttribute("lstContacts", lstContacts);
+		
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	
 	}
 

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+
+body, html {
+	height: 100%;
+}
+
+body {
+/* 	text-align: center; */
+	background-image:  url(img/proxibanque.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+h1 {
+	text-align: center;
+}
+
+form {
+	margin: 20% auto;
+	width: 450px;
+}
+
+input {
+	font: 1em sans-serif;
+ 	width: 30px;
+	padding: 2px;
+	margin: 20px 10px;
+	border-radius: 2px;
+	box-sizing: border-box;
+}
+
+input.valid-form {
+	margin: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 9px;
+}

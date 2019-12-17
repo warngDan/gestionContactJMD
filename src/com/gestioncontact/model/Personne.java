@@ -26,18 +26,19 @@ import javax.persistence.Table;
 
 /**
  * 
- * Description: Classe métier permettant d'instancier un objet Personne.
+ * Description: Classe mï¿½tier permettant d'instancier un objet Personne.
  * Elle contient: 
- * -tous les attributs associés
+ * -tous les attributs associï¿½s
  * -un constructeur
  * -les getters et setters de chaque attribut
- * -une méthode d'affichage
- * La classe est persisté dans la base de donnée
+ * -une mï¿½thode d'affichage
+ * La classe est persistï¿½ dans la base de donnï¿½e
  * 
  * @author Daniel & Jean-Michel
  * @version 1.0
  * 
  */
+
 @Entity
 @Table(name = "personnes")
 @Access(AccessType.FIELD)
@@ -57,7 +58,7 @@ public class Personne implements Serializable {
 	private String prenom;
 	
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name="contacts_adresses",
 	joinColumns = @JoinColumn(name="fk_adresse"),
 	inverseJoinColumns = @JoinColumn(name="fk_personne"))
@@ -109,7 +110,7 @@ public class Personne implements Serializable {
 	}
 
 
-	//Méthode d'affichage
+	//Mï¿½thode d'affichage
 	@Override
 	public String toString() {
 		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + adresse + "]";

@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>heloooo</h1>
-<p> p0 : ${p0}
+<p> p0 : ${p0.nom}
 	
 <p>
 <table>

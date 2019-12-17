@@ -57,7 +57,7 @@ public class Personne implements Serializable {
 	private String prenom;
 	
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name="contacts_adresses",
 	joinColumns = @JoinColumn(name="fk_adresse"),
 	inverseJoinColumns = @JoinColumn(name="fk_personne"))
@@ -110,10 +110,10 @@ public class Personne implements Serializable {
 
 
 	//Méthode d'affichage
-	@Override
-	public String toString() {
-		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + adresse + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + adresse + "]";
+//	}
 
 
 	

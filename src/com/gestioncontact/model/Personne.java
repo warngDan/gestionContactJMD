@@ -45,6 +45,9 @@ import javax.persistence.Table;
 
 @NamedQuery(name = "Personne.findAllPersonne",
 			query="SELECT p FROM Personne p")
+
+@NamedQuery(name = "Personne.getPersonByName",
+			query="SELECT p FROM Personne p WHERE p.nom = :nom AND p.prenom = :prenom")
 public class Personne implements Serializable {
 
 	//Attributs

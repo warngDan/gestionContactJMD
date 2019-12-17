@@ -12,8 +12,8 @@ import com.gestioncontact.model.Personne;
 
 /**
  * 
- * Cette classe "PersonneService" sert d'intermédiaire entre la servlet et la persistence pour transférer toutes les requêtes utilisateurs telles que :
- * -créer, supprimer, actualiser, rechercher un contact...
+ * Cette classe "PersonneService" sert d'intermÃ©diaire entre la servlet et la persistence pour transfÃ©rer toutes les requÃ©tes utilisateurs telles que :
+ * -crÃ©er, supprimer, actualiser, rechercher un contact...
  * 
  *  @author Daniel & Jean-Michel 
  *  
@@ -27,19 +27,31 @@ public class PersonneService {
 	
 	
 	/**
-	 * Cette méthode permet de rechercher une personne par son id.
-	 * Elle fait appel à la couche persistance pour transferer/traduire sa requête à la base de donnée.
-	 * @param parametre de type long faisant référence à l'id de la personne.
-	 * @return elle retourne l'objet personne stocké dans la base de donnée sous cet id.
+	 * Cette mÃ©thode permet de rechercher une personne par son id.
+	 * Elle fait appel Ã© la couche persistance pour transferer/traduire sa requÃ©te Ã© la base de donnÃ©e.
+	 * @param parametre de type long faisant rÃ©fÃ©rence Ã© l'id de la personne.
+	 * @return elle retourne l'objet personne stockÃ© dans la base de donnÃ©e sous cet id.
 	 */
 	public Personne getPersonById(long id) {
 		
 		return dao.getPersonById(id);
 	}
 	
+	
 	/**
-	 * Cette méthode permet d'afficher la liste des personnes contenue dans la base de donnée.
-	 * Elle fait appel à la couche persistance pour transferer/traduire sa requête à la base de donnée.
+	 * Cette mÃ©thode permet de rechercher une personne par son nom et son prÃ©nom.
+	 * Pour gÃ©rer l'Ã©ventualitÃ© de doublon, une liste est retournÃ©e avec toutes les occurences trouvÃ©es.
+	 * @param nom : Nom du contact recherchÃ©
+	 * @param prenom : PrÃ©nom du contact recherchÃ©
+	 */
+	public List<Personne> getPersonByName(String nom, String prenom) {
+		return dao.getPersonneByName(nom, prenom);
+		
+	}
+	
+	/**
+	 * Cette mÃ©thode permet d'afficher la liste des personnes contenue dans la base de donnÃ©e.
+	 * Elle fait appel Ã© la couche persistance pour transferer/traduire sa requÃ©te Ã© la base de donnÃ©e.
 	 * @return elle retourne les personnes sous forme de liste.
 	 */
 	public List<Personne> getAllPerson() {
@@ -47,9 +59,9 @@ public class PersonneService {
 	}
 	
 	/**
-	 * Cette méthode permet d'enregitrer une personne.
-	 * Elle fait appel à la couche persistance pour transferer/traduire sa requête à la base de donnée.
-	 * @param prend en paramètre un objet de type Personne.
+	 * Cette mÃ©thode permet d'enregitrer une personne.
+	 * Elle fait appel Ã© la couche persistance pour transferer/traduire sa requÃ©te Ã© la base de donnÃ©e.
+	 * @param prend en paramÃ©tre un objet de type Personne.
 	 * 
 	 */
 	public void saveNewPerson(Personne person) {
@@ -57,17 +69,17 @@ public class PersonneService {
 	}
 
 	/**
-	 * Cette méthode permet de supprimer un client par son id.
-	 * Elle fait appel à la couche persistance pour transferer/traduire sa requête à la base de donnée.
-	 * @param parametre de type long faisant référence à l'id de la personne.
+	 * Cette mÃ©thode permet de supprimer un client par son id.
+	 * Elle fait appel Ã© la couche persistance pour transferer/traduire sa requÃ©te Ã© la base de donnÃ©e.
+	 * @param parametre de type long faisant rÃ©fÃ©rence Ã© l'id de la personne.
 	 */
 	public void deletePerson(long id) {
 		dao.deletePerson(id);
 	}
 	
 	/**
-	 * Cette méthode permet de modifier les informations d'une personne.
-	 * Elle fait appel à la couche persistance pour transferer/traduire sa requête à la base de donnée.
+	 * Cette mÃ©thode permet de modifier les informations d'une personne.
+	 * Elle fait appel Ã© la couche persistance pour transferer/traduire sa requÃ©te Ã© la base de donnÃ©e.
 	 * @param les parametres pour la modification de son profil.
 	 */
 	public void updatePerson (long id, String nom, String prenom ) {

@@ -52,7 +52,7 @@ public class HomeServlet extends HttpServlet {
 
 		request.setAttribute("selectViewer", selectViewer);
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/"+selectViewer).forward(request, response);
+		this.getServletContext().getRequestDispatcher(selectViewer).forward(request, response);
 	}
 	
 

@@ -16,10 +16,11 @@ public class HomeServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public static final String CREATE_VIEW = "newConctact.jsp";
+	public static final String CREATE_VIEW = "newContact.jsp";
 	public static final String UPDATE_VIEW = "updateContact.jsp";
 	public static final String SEARCH_VIEW = "searchContact.jsp";
 	public static final String DELETE_VIEW = "deleteContact.jsp";
+	public static final String ALL_VIEW = "viewAllContact.jsp";
 	public static String selectViewer = "index.jsp";
        
    
@@ -52,7 +53,7 @@ public class HomeServlet extends HttpServlet {
 
 		request.setAttribute("selectViewer", selectViewer);
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/"+selectViewer).forward(request, response);
+		this.getServletContext().getRequestDispatcher(selectViewer).forward(request, response);
 	}
 	
 

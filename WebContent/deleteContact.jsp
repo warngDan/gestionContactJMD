@@ -1,4 +1,4 @@
-<<%@ page pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,4 +28,5 @@
             </form>
         </div>
     </body>
+    <%@include file="linkHome.jsp" %>
 </html>

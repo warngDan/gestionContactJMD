@@ -32,7 +32,8 @@
 </div>
 		<input class="valid-form" type="submit" id="submit" value="Valider"/>
 	    <input class="valid-form" type="reset"/>
-			</div>
+			
 		</form>					
 </body>
+<%@include file="linkHome.jsp" %>
 </html>

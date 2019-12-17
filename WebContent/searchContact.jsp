@@ -27,5 +27,6 @@
                 <input type="reset" value="Annuler" />
             </form>
         </div>
+        <%@include file="linkHome.jsp" %>
     </body>
 </html>

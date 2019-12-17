@@ -1,7 +1,6 @@
 package com.gestioncontact.presentation;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,47 +13,44 @@ import com.gestioncontact.model.Personne;
 import com.gestioncontact.services.PersonneService;
 
 /**
- * Servlet implementation class ServletSup
+ * Servlet implementation class UpdateServlet
  */
-@WebServlet("/ServletSup")
-public class ServletSup extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/UpdateServlet")
+public class UpdateServlet extends HttpServlet {
 	
-	private static final String VIEW = "/resultSearchDelete.jsp";
-       
 	@EJB
 	private PersonneService service;
+	
+	private static final String VIEW = "/updateContact.jsp";
+	
+	private static final long serialVersionUID = 1L;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletSup() {
-        super();
-        // TODO Auto-generated constructor stub
+    public UpdateServlet() {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom = request.getParameter("nomContact").trim();
-		String prenom = request.getParameter("prenomContact").trim();
+		// TODO Auto-generated method stub
+		String id = request.getParameter("checkup");
 		
-		List<Personne> lstContacts = service.getPersonByName(nom, prenom);
+		long idActual = Long.parseLong(id);
+	
+		Personne p= service.getPersonById(idActual);
 		
-		
-		
-		request.setAttribute("lstContacts", lstContacts);
+		request.setAttribute("p", p);
 		
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
-	
+		
 	}
 
 }

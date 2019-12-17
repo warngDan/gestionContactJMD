@@ -82,11 +82,10 @@ public class PersonneService {
 	 * Elle fait appel é la couche persistance pour transferer/traduire sa requéte é la base de donnée.
 	 * @param les parametres pour la modification de son profil.
 	 */
-	public void updatePerson (long id, String nom, String prenom ) {
-		Personne personne = dao.getPersonById(id);
-		personne.setNom(nom);
-		personne.setPrenom(prenom);
-				
+	public void updatePerson (Personne personne ) {
+						
 		dao.updatePerson(personne);
+	
+		
 	}
 }

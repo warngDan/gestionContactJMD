@@ -1,32 +1,26 @@
 package com.gestioncontact.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
 
 /**
 
  * 
- * Description: Classe métier permettant d'instancier un objet Adresse.
+ * Description: Classe mï¿½tier permettant d'instancier un objet Adresse.
  * Elle contient: 
- * -tous les attributs associés
+ * -tous les attributs associï¿½s
  * -un constructeur
  * -les getters et setters de chaque attribut
- * -une méthode d'affichage
- * La classe est persisté dans la base de donnée
+ * -une mï¿½thode d'affichage
+ * La classe est persistï¿½ dans la base de donnï¿½e
  * 
  * @author Daniel & Jean-Michel
  * @version 1.0
@@ -92,7 +86,7 @@ public class Adresse implements Serializable {
 		this.pays = pays;
 	}
 
-	//Méthode d'affichage
+	//Mï¿½thode d'affichage
 	@Override
 	public String toString() {
 		return "Adresse [id=" + pk + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + ", pays="

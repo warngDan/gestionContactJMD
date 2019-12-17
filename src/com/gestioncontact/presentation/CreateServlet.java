@@ -16,20 +16,19 @@ import com.gestioncontact.services.PersonneService;
 /**
  * Servlet implementation class ServletCreate
  */
-@WebServlet("/ServletCreate")
-public class ServletCreate extends HttpServlet {
+@WebServlet("/CreateServlet")
+public class CreateServlet extends HttpServlet {
 	
 	@EJB
 	private PersonneService service;
 	
-	private static final String MESSAGE_ERREUR= "";
 	
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCreate() {
+    public CreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -59,7 +58,7 @@ public class ServletCreate extends HttpServlet {
 		Personne p = new Personne(civilite, nom ,prenom );
 		if((rue.isEmpty())||(cp.isEmpty())||(ville.isEmpty())||(pays.isEmpty())) {
 			
-			;
+			
 			
 		}else {
 			a.setRue(rue);

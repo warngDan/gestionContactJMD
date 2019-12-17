@@ -14,56 +14,47 @@ import com.gestioncontact.model.Personne;
 import com.gestioncontact.services.PersonneService;
 
 /**
- * Servlet implementation class homeServlet
+ * Servlet implementation class ServletSup
  */
-@WebServlet("/HomeServlet")
-public class HomeServlet extends HttpServlet {
-	
-	@EJB
-	private PersonneService service;
-	
+@WebServlet("/DeleteServlet")
+public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public static final String CREATE_VIEW = "/newContact.jsp";
-	
-	public static final String SEARCH_VIEW = "/searchContact.jsp";
-	
-	public static final String ALL_VIEW = "/viewAllContact.jsp";
-	public static String selectViewer = "index.jsp";
-
-	List<Personne> listContact;
+	private static final String VIEW = "/resultSearchDelete.jsp";
        
+	@EJB
+	private PersonneService service;
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DeleteServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-   
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
 		
+	
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nom = request.getParameter("nomContact").trim();
+		String prenom = request.getParameter("prenomContact").trim();
 		
-		String check = request.getParameter("check");
-
-		request.setAttribute("check", check);
+		List<Personne> lstContacts = service.getPersonByName(nom, prenom);
 		
-		if (check.equals("create")) {
-			selectViewer = CREATE_VIEW;
-		}  else if (check.equals("search")) {
-			selectViewer = SEARCH_VIEW;
-		}else if (check.equals("view")) {
-			selectViewer = ALL_VIEW;
-
-			listContact = service.getAllPerson();
-			request.setAttribute("listContact", listContact);
-		}
 		
-		this.getServletContext().getRequestDispatcher(selectViewer).forward(request, response);
-	}
+		
+		request.setAttribute("lstContacts", lstContacts);
+		
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	
+	}
 
 }

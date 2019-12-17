@@ -1,7 +1,6 @@
 package com.gestioncontact.presentation;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,53 +9,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gestioncontact.model.Personne;
 import com.gestioncontact.services.PersonneService;
 
 /**
- * Servlet implementation class SearchContactServlet
+ * Servlet implementation class ServletSup
  */
-@WebServlet("/SearchContactServlet")
-public class SearchContactServlet extends HttpServlet {
-	
-	@EJB
-	private PersonneService service;
+@WebServlet("/ServletSup")
+public class ServletSup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-//	private static final String MESSAGE_ERREUR = "";
-	private static final String VIEW = "/resultSearch.jsp";
-	
-	
-	
-	
+	@EJB
+	private PersonneService service;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchContactServlet() {}
+    public ServletSup() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		long newId=Long.parseLong(id);
 		
-		String nom = request.getParameter("nomContact").trim();
-		String prenom = request.getParameter("prenomContact").trim();
-		
-		Personne contact = service.getPersonByName(nom, prenom);
-		
-		
-		
-		request.setAttribute("contact", contact);
-		
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
-		
+		service.deletePerson(newId);
+	
 	}
 
 }

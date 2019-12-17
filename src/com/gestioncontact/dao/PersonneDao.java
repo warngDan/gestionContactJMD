@@ -10,7 +10,7 @@ import com.gestioncontact.model.Personne;
 
 /**
  * Description:
- * Class PersonneDAO qui int�ragit avec la base de donn�es pour r�aliser op�rations dites "CRUD".
+ * Class PersonneDAO qui intéragit avec la base de données pour réaliser opérations dites "CRUD".
  * 
  * @author Jean-Michel & Daniel
  * @version 1.0 
@@ -25,28 +25,32 @@ public class PersonneDao {
 	
 	
 	/**
-	 * M�thode de recherche d'une entit� "Personne" dans la base de donn�es
-	 * @param id de type "long" faisant r�f�rence � l'id de la personne
-	 * @return renvoi vers l'objet Personne stock� dans la BDD sous cet id
+	 * Méthode de recherche d'une entité "Personne" dans la base de données
+	 * @param id de type "long" faisant référence é l'id de la personne
+	 * @return renvoi vers l'objet Personne stocké dans la BDD sous cet id
 	 */	
 	public Personne getPersonById(long id) {
 		return em.find(Personne.class, id);
 	}
 	
-	
-	public List<Personne> getPersonneByName(String nom, String prenom) {
+	/**
+	 * Méthode de recherche d'une entité "Personne" dans la base de données par son Nom et son prénom.
+	 * @param id de type "long" faisant référence à l'id de la personne
+	 * @return renvoi vers l'objet Personne stocké dans la BDD sous cet id
+	 */	
+	public Personne getPersonneByName(String nom, String prenom) {
 		List<Personne> listPersons = em.createNamedQuery("Personne.getPersonByName", Personne.class)
 				.setParameter("nom", nom).setParameter("prenom", prenom).getResultList();
 		if (listPersons.isEmpty()) {
 			return null;
 		}
-		return listPersons;
+		return listPersons.get(0);
 	}
 	
 	
 	
 	/**
-	 * M�thode permettant d'afficher la totalit� des personnes de la base de donn�e.
+	 * Méthode permettant d'afficher la totalité des personnes de la base de donnée.
 	 */
 	public List<Personne> getAllPerson() {
 		
@@ -55,7 +59,7 @@ public class PersonneDao {
 	}
 	
 	/**
-	 * M�thode d'enregistrement d'une entit� "Personne" dans la base de donn�es
+	 * Méthode d'enregistrement d'une entité "Personne" dans la base de données
 	 * @param person de type "Personne"
 	 */
 	public void savePerson(Personne person) {
@@ -63,7 +67,7 @@ public class PersonneDao {
 	}
 	
 	/**
-	 * M�thode de mise � jour des attributs d'une personne
+	 * Méthode de mise é jour des attributs d'une personne
 	 * @param person de type "Personne"
 	 */ 
 	public void updatePerson(Personne person ) {
@@ -73,8 +77,8 @@ public class PersonneDao {
 	}
 	
 	/**
-	 * M�thode de suppression d'une entit� "Personne" dans la base de donn�es
-	 * @param id de type "long" faisant r�f�rence � l'id de la Personne
+	 * Méthode de suppression d'une entité "Personne" dans la base de données
+	 * @param id de type "long" faisant référence é l'id de la Personne
 	 */
 	public void deletePerson(long id) {
 		

@@ -44,7 +44,7 @@ public class PersonneService {
 	 * @param nom : Nom du contact recherché
 	 * @param prenom : Prénom du contact recherché
 	 */
-	public List<Personne> getPersonByName(String nom, String prenom) {
+	public Personne getPersonByName(String nom, String prenom) {
 		return dao.getPersonneByName(nom, prenom);
 		
 	}

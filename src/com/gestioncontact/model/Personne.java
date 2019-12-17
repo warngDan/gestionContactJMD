@@ -113,11 +113,17 @@ public class Personne implements Serializable {
 	}
 
 
-	//M�thode d'affichage
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	//Methode d'affichage
 	@Override
 	public String toString() {
 		return "Personne [id=" + pk + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ",adresse =" + adresse + "]";
 	}
+
 
 
 	

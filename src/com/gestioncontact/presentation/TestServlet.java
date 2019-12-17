@@ -18,6 +18,8 @@ import java.util.List;
  */
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
+	
+	private String VUE= "/WEB-INF/index.jsp";
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
@@ -31,19 +33,19 @@ public class TestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
+			
 		// Test getPersonById()
 		
-		Personne p0 = service.getPersonById(1);
-		request.setAttribute("p0", p0);
+		//Personne p0 = service.getPersonById(1);
+		//request.setAttribute("p0", p0);
 		
 		
-		// Test saveNewPerson() et getPersonByName();
+		 //Test saveNewPerson() et getPersonByName();
 		
-		//Personne p1 = new Personne("Mr", "CESAIRE", "Daniel");
+		Personne p1 = new Personne("Mr", "CESAIRE", "Daniel");
 	
-	//	service.saveNewPerson(p1);
-	//	request.setAttribute("p1", p1);
+		service.saveNewPerson(p1);
+		request.setAttribute("p1", p1);
 		
 	
 		

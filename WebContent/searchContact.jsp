@@ -25,7 +25,7 @@
 
                 </fieldset>
                 <input type="submit" value="Valider"  />
-                <input type="reset" value="Annuler" /> <br />
+                <input type="reset" value="Annuler" />
             </form>
         </div>
     </body>

@@ -111,6 +111,10 @@ public class Personne implements Serializable {
 
 
 
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
 	//Methode d'affichage
 	@Override
 	public String toString() {

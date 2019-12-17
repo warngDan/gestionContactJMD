@@ -40,7 +40,7 @@ public class TestServlet extends HttpServlet {
 		//request.setAttribute("p0", p0);
 		
 		
-		// Test saveNewPerson() et getPersonByName();
+		 //Test saveNewPerson() et getPersonByName();
 		
 		Personne p1 = new Personne("Mr", "CESAIRE", "Daniel");
 	

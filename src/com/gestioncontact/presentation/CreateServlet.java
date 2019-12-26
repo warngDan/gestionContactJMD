@@ -56,11 +56,11 @@ public class CreateServlet extends HttpServlet {
 		
 		Adresse a = new Adresse();
 		Personne p = new Personne(civilite, nom ,prenom );
-		if((rue.isEmpty())||(cp.isEmpty())||(ville.isEmpty())||(pays.isEmpty())) {
+		
+		if ((rue.isEmpty())||(cp.isEmpty())||(ville.isEmpty())||(pays.isEmpty())) {
+				;
 			
-			
-			
-		}else {
+		} else {
 			a.setRue(rue);
 			a.setCodePostale(cp);
 			a.setVille(ville);
@@ -69,7 +69,6 @@ public class CreateServlet extends HttpServlet {
 		}
 		
 		service.saveNewPerson(p);
-		
 	}
 
 	

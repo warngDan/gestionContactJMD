@@ -86,10 +86,4 @@ public class PersonneDao {
 		em.remove(em.find(Personne.class, id));
 	}
 
-	
-
-  
-
-	
-	
 }

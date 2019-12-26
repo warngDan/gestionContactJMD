@@ -64,12 +64,7 @@ public class ValideUpdateServlet extends HttpServlet {
 		
 		service.updatePerson(p);
 		
-		
-		//service.deletePerson(66);
-		//service.updatePerson(67, "CESAIRE", "Jean");
-		
-//		String message = "Hello";
-//		request.setAttribute("coucou", message);
+	
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

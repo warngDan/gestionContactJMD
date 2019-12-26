@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet {
 	public static final String SEARCH_VIEW = "/searchContact.jsp";
 	
 	public static final String ALL_VIEW = "/viewAllContact.jsp";
-	public static String selectViewer = "index.jsp";
+	public static String selectViewer = "index.html";
 
 	List<Personne> listContact;
        

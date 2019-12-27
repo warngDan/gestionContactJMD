@@ -3,41 +3,42 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>AffichageContact</title>
-</head>
-<body>
+	<head>
+	<meta charset="UTF-8">
+	<title>AffichageContacts</title>
+	</head>
+	<body>
 
-	<h1>Liste de contacts</h1>
-	<table>
-		<tr>
-			<th>id</th>
-			<th>nom</th>
-			<th>prenom</th>
-			<th>rue</th>
-			<th>code postale</th>
-			<th>ville</th>
-			<th>pays</th>
-		</tr>
-		<c:forEach var="personne" items="${p1sav}">
-			<tr>
-				<td>${personne.pk}</td>
-				<td>${personne.nom}</td>
-				<td>${personne.prenom}</td>
-				<td>${personne.adresse.rue}</td>
-				<td>${personne.adresse.codePostale}</td>
-				<td>${personne.adresse.ville}</td>
-				<td>${personne.adresse.pays}</td>
-			</tr>
->
+		<h1>Liste de contacts</h1>
+		
+		<div class="div-message">
+			<p class="succes-msg"> ${succesMessage} </p>
+			<p class="error-msg"> ${errorMessage} </p> 	
+		 </div>
+		<table>
+					<tr>
+						<th>Id</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Rue</th>
+						<th>Code postale</th>
+						<th>Ville</th>
+						<th>Pays</th>
+					</tr>
+					<c:forEach var="personne" items="${listContact}">
+					<tr>
+						<td>${personne.pk}</td>
+						<td>${personne.nom}</td>
+						<td>${personne.prenom}</td>
+						<td>${personne.adresse.rue}</td>
+						<td>${personne.adresse.codePostale}</td>
+						<td>${personne.adresse.ville}</td>
+						<td>${personne.adresse.pays}</td>
+					</tr>
+					</c:forEach>
+				</table>
 
-		</c:forEach>
-
-
-
-	</table>
-<%@include file="linkHome.jsp" %>
-</body>
+		<%@include file="linkHome.jsp" %>
+	</body>
 
 </html>

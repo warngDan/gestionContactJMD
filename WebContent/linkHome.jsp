@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<a href="index.html">Affiche menu</a>
+<a href="index.jsp">Retour menu</a>

@@ -12,13 +12,13 @@
 	<table>
 		<tr>
 			<th>
-			<th>id</th>
-			<th>nom</th>
-			<th>prenom</th>
-			<th>rue</th>
-			<th>code postale</th>
-			<th>ville</th>
-			<th>pays</th>
+			<th>Id</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Rue</th>
+			<th>Code postale</th>
+			<th>Ville</th>
+			<th>Pays</th>
 		</tr>
 		<c:forEach var="personne" items="${lstContacts}">
 			<tr>

@@ -1,6 +1,7 @@
 package com.gestioncontact.presentation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -36,25 +37,17 @@ public class DeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		service.deletePerson(Long.parseLong(request.getParameter("checkup")));
 		
-	
+		
+		request.setAttribute("lstContacts", new ArrayList<Personne>());
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom = request.getParameter("nomContact").trim();
-		String prenom = request.getParameter("prenomContact").trim();
-		
-		List<Personne> lstContacts = service.getPersonByName(nom, prenom);
-		
-		
-		
-		request.setAttribute("lstContacts", lstContacts);
-		
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
-	
 	}
 
 }

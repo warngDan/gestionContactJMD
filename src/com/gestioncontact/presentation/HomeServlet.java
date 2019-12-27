@@ -23,15 +23,12 @@ public class HomeServlet extends HttpServlet {
 	private PersonneService service;
 	
 	private static final long serialVersionUID = 1L;
-	
-	public static final String CREATE_VIEW = "/newContact.jsp";
-	
-	public static final String SEARCH_VIEW = "/searchContact.jsp";
-	
-	public static final String ALL_VIEW = "/viewAllContact.jsp";
-	public static String selectViewer = "index.html";
+	private static final String CREATE_VIEW = "/newContact.jsp";
+	private static final String SEARCH_VIEW = "/searchContact.jsp";
+	private static final String ALL_VIEW = "/viewAllContact.jsp";
+	private static String selectViewer = "/index.jsp";
 
-	List<Personne> listContact;
+	private List<Personne> listContact;
        
 
    

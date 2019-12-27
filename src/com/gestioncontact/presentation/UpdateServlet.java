@@ -45,7 +45,7 @@ public class UpdateServlet extends HttpServlet {
 		
 		long idActual = Long.parseLong(id);
 	
-		Personne p= service.getPersonById(idActual);
+		Personne p = service.getPersonById(idActual);
 		
 		request.setAttribute("p", p);
 		

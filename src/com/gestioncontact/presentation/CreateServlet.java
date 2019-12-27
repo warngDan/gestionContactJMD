@@ -1,6 +1,8 @@
 package com.gestioncontact.presentation;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,6 +23,11 @@ public class CreateServlet extends HttpServlet {
 	
 	@EJB
 	private PersonneService service;
+	private String succesMessage;
+	private String errorMessage;
+	private static final String redirectView = "/viewAllContact.jsp";
+	
+	private List<Personne> listContact;
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -37,14 +44,14 @@ public class CreateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String civilite = request.getParameter("civilite").trim();
 		String nom = request.getParameter("nom").trim();
 		String prenom = request.getParameter("prenom").trim();
@@ -54,21 +61,29 @@ public class CreateServlet extends HttpServlet {
 		String ville = request.getParameter("ville").trim();
 		String pays = request.getParameter("pays").trim();
 		
-		Adresse a = new Adresse();
-		Personne p = new Personne(civilite, nom ,prenom );
+		Adresse adresse = new Adresse();
+		Personne personne = new Personne(civilite, nom ,prenom );
 		
 		if ((rue.isEmpty())||(cp.isEmpty())||(ville.isEmpty())||(pays.isEmpty())) {
-				;
-			
+				errorMessage = "ATTENTION : Adresse non renseignée.";
 		} else {
-			a.setRue(rue);
-			a.setCodePostale(cp);
-			a.setVille(ville);
-			a.setPays(pays);
-			p.setAdresse(a);
+			adresse.setRue(rue);
+			adresse.setCodePostale(cp);
+			adresse.setVille(ville);
+			adresse.setPays(pays);
+			personne.setAdresse(adresse);
 		}
 		
-		service.saveNewPerson(p);
+		service.saveNewPerson(personne);
+		listContact = new ArrayList<Personne>();
+		listContact.add(personne);
+		succesMessage = "Sauvegardé avec succès !";
+		
+		request.setAttribute("succesMessage", succesMessage);
+		request.setAttribute("errorMessage", errorMessage);
+		request.setAttribute("listContact", listContact);
+		
+		this.getServletContext().getRequestDispatcher(redirectView).forward(request, response);
 	}
 
 	

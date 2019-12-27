@@ -24,7 +24,8 @@ public class ValideUpdateServlet extends HttpServlet {
 	
 	@EJB
 	private PersonneService service;
-
+	private static final String REDIRECT_VIEW = "/viewAllContact.jsp";
+	private String succesMessage = "";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -47,8 +48,8 @@ public class ValideUpdateServlet extends HttpServlet {
 		String nom = request.getParameter("nom").trim();
 		String prenom = request.getParameter("prenom").trim();
 		
-		String rue = request.getParameter("rue");
-		String cp = request.getParameter("cp");
+		String rue = request.getParameter("rue").trim();
+		String cp = request.getParameter("cp").trim();
 		String ville = request.getParameter("ville").trim();
 		String pays = request.getParameter("pays").trim();
 		Adresse a = new Adresse();
@@ -64,8 +65,10 @@ public class ValideUpdateServlet extends HttpServlet {
 		
 		service.updatePerson(p);
 		
+		request.setAttribute("succesMessage", "Enregistré !");
+		
 	
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher(REDIRECT_VIEW).forward(request, response);
 	}
 
 }
